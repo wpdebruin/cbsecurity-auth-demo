@@ -151,9 +151,9 @@ component {
 				"validator"						: "JWTService@cbsecurity",
 				"userService"                	: "userService",
 				"invalidAuthenticationEvent" 	: "main.NotAuthenticated",
-				"defaultAuthenticationAction"	: "override",
+				"defaultAuthenticationAction"	: "redirect",
 				"invalidAuthorizationEvent"  	: "main.NotAuthorized",
-				"defaultAuthorizationAction"	: "override",
+				"defaultAuthorizationAction"	: "redirect",
 				"useSSL"            			: true,
 				"handlerAnnotationSecurity"     : true,
 				"rules"							: [
