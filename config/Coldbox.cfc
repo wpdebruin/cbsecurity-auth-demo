@@ -156,7 +156,26 @@ component {
 				"defaultAuthorizationAction"	: "override",
 				"useSSL"            			: true,
 				"handlerAnnotationSecurity"     : true,
-				"rules"							: [],
+				"rules"							: [
+					// first rule before goAdmin because name is more specific. secureList is regext
+					// or specify '^RulesSecuredHandlergoAdmin$'
+					{
+						"securelist"    : "RulesSecuredHandler.goAdminAndManager", 
+						"permissions"    : "admin,manager" 
+					},					
+					{
+						"securelist"    : "RulesSecuredHandler.goAdmin", 
+						"permissions"    : "admin" 
+					},					
+					{
+						"securelist"    : "RulesSecuredHandler.goManager", 
+						"permissions"    : "manager" 
+					},					
+					{
+						"securelist"    : "RulesSecuredHandler.goEmployee", 
+						"permissions"    : "employee" 
+					},					
+				],
 				"jwt"                     		: {
 					"issuer"				  : "https://your.site.ext/",
 					"secretKey"               : getSystemSetting( "JWT_SECRET", "" ),
