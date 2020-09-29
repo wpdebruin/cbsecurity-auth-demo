@@ -122,7 +122,12 @@ component {
 		 * --------------------------------------------------------------------------
 		 * Remember that the order of declaration is the order they will be registered and fired
 		 */
-		interceptors = [];
+		interceptors = [
+			{ 
+				class = "interceptors.JwtCookieInterceptor",
+				name = "JwtCookieInterceptor"
+			}			
+		];
 
 		/**
 		 * --------------------------------------------------------------------------
@@ -137,7 +142,39 @@ component {
 		 *
 		 * }
 		 */
-		moduleSettings = {};
+		moduleSettings = {
+			cbAuth: {
+				userServiceClass: "UserService"
+			},
+			cbSecurity : {
+				//"authenticationService"  		: "authenticationService@cbauth",
+				"validator"						: "JWTService@cbsecurity",
+				"userService"                	: "userService",
+				"invalidAuthenticationEvent" 	: "main.NotAuthenticated",
+				"defaultAuthenticationAction"	: "override",
+				"invalidAuthorizationEvent"  	: "main.NotAuthorized",
+				"defaultAuthorizationAction"	: "override",
+				"useSSL"            			: true,
+				"handlerAnnotationSecurity"     : true,
+				"rules"							: [],
+				"jwt"                     		: {
+					"issuer"				  : "https://your.site.ext/",
+					"secretKey"               : getSystemSetting( "JWT_SECRET", "" ),
+					"customAuthHeader"        : "x-auth-token",
+					"expiration"              : 24*60*31,
+					//"algorithm"               : "HS512",
+					"requiredClaims"          : ["iss","sub","exp","scope"] ,
+					"tokenStorage"            : {
+						"enabled"       : false,  
+						//"keyPrefix"     : "cbjwt_",
+						//"driver"        : "cachebox",
+						//"properties"    : {
+						//	"cacheName" : "default"
+						//}
+					}
+				}
+			},
+		};
 
 		/**
 		 * --------------------------------------------------------------------------

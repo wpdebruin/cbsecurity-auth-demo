@@ -27,12 +27,16 @@
         "coldbox":"coldbox/",
         "testbox":"testbox/",
         "cbsecurity":"modules/cbsecurity/",
-        "cfmigrations":"modules/cfmigrations/"
+        "cfmigrations":"modules/cfmigrations/",
+        "BCrypt":"modules/BCrypt/",
+        "cbstorages":"modules/cbstorages/"
     },
     "dependencies":{
         "coldbox":"be",
         "cbsecurity":"^2.7.0+120",
-        "cfmigrations":"^2.0.9"
+        "cfmigrations":"^2.0.9",
+        "BCrypt":"^2.5.0+25",
+        "cbstorages":"^2.2.0+50"
     },
     "scripts":{},
     "cfmigrations":{

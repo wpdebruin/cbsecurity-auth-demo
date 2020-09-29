@@ -10,6 +10,9 @@ component {
 	this.sessionManagement = true;
 	this.sessionTimeout    = createTimespan( 0, 0, 30, 0 );
 	this.setClientCookies  = true;
+	
+	//set default datasource
+	this.datasource="cbsecurity-auth-demo";
 
 	// Java Integration
 	this.javaSettings = {

@@ -8,6 +8,14 @@ component extends="coldbox.system.EventHandler" {
 		event.setView( "main/index" );
 	}
 
+	function notAuthenticated(event, rc, prc ){
+		return "not authenticated";
+	}
+
+	function notAuthorized(event, rc, prc ){
+		return "not authorized";
+	}
+	
 	/**
 	 * Produce some restfulf data
 	 */
